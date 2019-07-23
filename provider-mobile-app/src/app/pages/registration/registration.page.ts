@@ -16,7 +16,7 @@ export class RegistrationPage {
   public cellphone: string;
   public email: string;
   public password: string;
-  public role: string = "user";
+  public role: string = "provider";
   public users: any;
 
   constructor(
