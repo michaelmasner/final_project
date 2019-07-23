@@ -26,9 +26,9 @@ router.post("/create", (req, res) => {
         });
 });
 
-router.post("/update", (req, res) => {
+router.post("/update/:id", (req, res) => {
     User.prototype
-        .updateByID(req.body.id)
+        .updateByID(req.params.id, req.body)
         .then(users => {
             res.send(users);
         })
@@ -39,7 +39,7 @@ router.post("/update", (req, res) => {
 
 router.get("/:id", (req, res) => {
     User.prototype
-        .getById(req.body.id)
+        .getById(req.params.id)
         .then(users => {
             res.send(users);
         })

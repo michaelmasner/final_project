@@ -2,11 +2,11 @@ const express = require("express");
 
 const router = express.Router();
 
-const Property = require('../models/properties-model');
+const Provider = require('../models/provider-model');
 
 // Get all Properties
 router.get("/", (req, res) => {
-    Property.prototype
+    Provider.prototype
         .getAll()
         .then(users => {
             res.send(users);
@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
 
 // Create new Property
 router.post("/create", (req, res) => {
-    Property.prototype
+    Provider.prototype
         .create(req.body)
         .then(users => {
             res.send(users);
@@ -29,9 +29,9 @@ router.post("/create", (req, res) => {
 });
 
 // Update Property by ID
-router.post("/update", (req, res) => {
-    Property.prototype
-        .updateByID(req.body.id)
+router.post("/update/:id", (req, res) => {
+    Provider.prototype
+        .updateByID(req.params.id, req.body)
         .then(users => {
             res.send(users);
         })
@@ -42,8 +42,8 @@ router.post("/update", (req, res) => {
 
 // Get Property by ID
 router.get("/:id", (req, res) => {
-    Property.prototype
-        .getById(req.body.id)
+    Provider.prototype
+        .getById(req.params.id)
         .then(users => {
             res.send(users);
         })
@@ -54,7 +54,7 @@ router.get("/:id", (req, res) => {
 
 // Delete Property
 router.post("/delete", (req, res) => {
-    Property.prototype
+    Provider.prototype
         .remove(req.body.id)
         .then(users => {
             res.send(users);

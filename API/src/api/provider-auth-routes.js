@@ -2,12 +2,12 @@ const express = require("express");
 
 const router = express.Router();
 
-const AuthService = require("../services/auth-service");
+const ProviderAuthService = require("../services/provider-auth-service");
 
 
 // sending login information to database, so post method is used 
 router.post("/login", (req, res) => {
-  AuthService.prototype
+  ProviderAuthService.prototype
     .login(req.body)
     .then(users => {
       res.send(users);
@@ -19,7 +19,7 @@ router.post("/login", (req, res) => {
 
 // sending register information to database, so post method is used
 router.post("/register", (req, res) => {
-    AuthService.prototype
+    ProviderAuthService.prototype
     .register(req.body)
     .then(users => {
       res.send(users);

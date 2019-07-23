@@ -14,8 +14,9 @@ app.use(express.urlencoded({ extended: false }));
 //app.use(jwtAuth);
 
 app.use("/api/user", usersRouter);
-app.use("/api/property", require("./src/api/property-routes"));
-app.use("/api/auth", require("./src/api/auth-routes"));
+app.use("/api/provider", require("./src/api/provider-routes"));
+app.use("/api/userauth", require("./src/api/user-auth-routes"));
+app.use("/api/providerauth", require("./src/api/provider-auth-routes"));
 
 // Custom Middleware
 app.use((req, res, next) => {
@@ -24,7 +25,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, "127.0.0.1", () =>
   console.log(`Server running on port ${PORT}`)

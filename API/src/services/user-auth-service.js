@@ -4,8 +4,7 @@ const User = require("../models/user-model");
 
 //var jwt = require('jsonwebtoken');
 
-module.exports = class AuthService {
-  constructor() {}
+module.exports = class UserAuthService {
 
   // async hashPassword(password) {
   //   var salt = bcrypt.genSaltSync(10);
