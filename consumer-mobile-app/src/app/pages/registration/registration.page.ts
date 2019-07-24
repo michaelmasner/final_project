@@ -11,8 +11,8 @@ import { AuthService } from "../../services/auth.service";
 })
 export class RegistrationPage {
   public user = new User();
-  public firstName: string;
-  public lastName: string;
+  public name: string;
+  public surname: string;
   public cellphone: string;
   public email: string;
   public password: string;
@@ -44,8 +44,8 @@ export class RegistrationPage {
   }
   register(){
     const authUser = {
-      firstName: this.firstName,
-      lastName: this.lastName,
+      firstName: this.name,
+      lastName: this.surname,
       cellphone: this.cellphone,
       email: this.email,
       password: this.password,

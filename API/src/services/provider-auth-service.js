@@ -11,18 +11,18 @@ module.exports = class ProviderAuthService {
   //   var salt = bcrypt.genSaltSync(10);
   //   return await bcrypt.hash(password, salt);
   // }
-  async login(authUser) {
+  async login(authProvider) {
     return new Promise((resolve, reject) => {
       Provider.prototype
         .getAll()
-        .then(users => {
-          const dbUser = users.filter(user => {
-            return user.email == authUser.email;
+        .then(providers => {
+          const dbProvider = providers.filter(provider => {
+            return provider.email == authProvider.email;
           });
-          if (dbUser.length) {
+          if (dbProvider.length) {
             //const match = bcrypt.compare(dbUser[0].password, authUser.password);
-            if (dbUser[0].password == authUser.password) {
-              resolve(dbUser);
+            if (dbProvider[0].password == authProvider.password) {
+              resolve(dbProvider);
             } else {
               reject("incorrect password");
             }
@@ -36,16 +36,16 @@ module.exports = class ProviderAuthService {
     });
   }
 
-  async register(authUser) {
+  async register(authProvider) {
     return new Promise((resolve, reject) => {
       Provider.prototype
         .getAll()
-        .then(users => {
-          const dbUser = users.filter(user => {
-            return user.email == authUser.email;
+        .then(providers => {
+          const dbProvider = providers.filter(provider => {
+            return provider.email == authProvider.email;
           });
-          if (dbUser.length >= 1) {
-            if (dbUser[0].email == authUser.email) {
+          if (dbProvider.length >= 1) {
+            if (dbProvider[0].email == authProvider.email) {
               reject("User email is already taken. Try again.");
             }
           } else {
@@ -60,7 +60,7 @@ module.exports = class ProviderAuthService {
             // };
             // const newUser = new User(userObj);
             Provider.prototype
-              .create(authUser)
+              .create(authProvider)
               .then(user => resolve(user))
               .catch(err => reject(err));
           }

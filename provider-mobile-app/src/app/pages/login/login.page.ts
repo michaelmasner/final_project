@@ -9,10 +9,7 @@ import { AuthService } from "../../services/auth.service";
   templateUrl: "./login.page.html",
   styleUrls: ["./login.page.scss"]
 })
-export class LoginPage implements OnInit {
-  ngOnInit(): void {
-    throw new Error("Method not implemented.");
-  }
+export class LoginPage  {
   public user = new User();
   public email: string;
   public password: string;
@@ -33,28 +30,28 @@ export class LoginPage implements OnInit {
     });
     await alert.present();
   }
-  login(){
+  login() {
     const authUser = {
       email: this.email,
       password: this.password
     };
-    this.authService.login(authUser).then(res =>{
-      const testId = localStorage.getItem('userId');
-      console.log(testId);
-    
-    this.navCtrl.navigateForward('home', {
-      queryParams: {
-        user: res
-      }
-    })// first page after login
-  }).catch(err =>{
-    this.presentAlert(err);
-  })
+    this.authService
+      .login(authUser)
+      .then(res => {
+        const testId = localStorage.getItem("userId");
+        console.log(testId);
+
+        this.navCtrl.navigateForward("profile", {
+          queryParams: {
+            user: res
+          }
+        });
+      })
+      .catch(err => {
+        this.presentAlert(err);
+      });
   }
   navToRegistration() {
     this.navCtrl.navigateForward("registration");
-  }
-  navToProfile() {
-    this.navCtrl.navigateForward("profile");
   }
 }

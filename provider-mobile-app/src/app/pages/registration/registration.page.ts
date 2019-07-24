@@ -44,12 +44,12 @@ export class RegistrationPage {
   }
   register(){
     const authUser = {
-      name: this.name,
-      surname: this.surname,
+      firstName: this.name,
+      lastName: this.surname,
       cellphone: this.cellphone,
       email: this.email,
       password: this.password,
-      role: this.role
+      role: "provider"
     };
     this.authService.register(authUser).then(res =>{
       const testId = localStorage.getItem("userId");

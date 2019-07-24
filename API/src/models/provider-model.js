@@ -9,8 +9,8 @@ const roles = {
   };
 module.exports = class Provider {
     constructor(newName, newSurname, newCellphone, newEmail, newPassword) {
-        this.firstName = newName;
-        this.lastName = newSurname;
+        this.name = newName;
+        this.surname = newSurname;
         this.cellphone = newCellphone;
         this.email = newEmail;
         this.password = newPassword;
